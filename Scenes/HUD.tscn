@@ -1,0 +1,113 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1fuiuu7xvwh2"]
+
+[ext_resource type="FontFile" uid="uid://bqiokrkdq8txv" path="res://Assets/Fonts/Roboto-Medium.ttf" id="1_suwq4"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="TemperatureLabel" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_suwq4")
+theme_override_font_sizes/font_size = 30
+text = "20°C "
+
+[node name="TimeLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -67.0
+offset_bottom = 23.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("1_suwq4")
+theme_override_font_sizes/font_size = 30
+text = "12AM "
+
+[node name="SoundMeter" type="ProgressBar" parent="."]
+offset_left = 1603.0
+offset_right = 1782.0
+offset_bottom = 36.0
+show_percentage = false
+
+[node name="SoundLabel" type="Label" parent="."]
+offset_left = 1496.0
+offset_right = 1597.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("1_suwq4")
+theme_override_font_sizes/font_size = 30
+text = "Sound:"
+
+[node name="DebugStats" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TimeLeft" type="Label" parent="DebugStats"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "TimeLeft"
+
+[node name="MohamedHappiness" type="Label" parent="DebugStats"]
+layout_mode = 0
+offset_top = 138.0
+offset_right = 40.0
+offset_bottom = 161.0
+text = "MohamedHappiness"
+
+[node name="MohamedKill" type="Label" parent="DebugStats"]
+layout_mode = 0
+offset_top = 184.0
+offset_right = 40.0
+offset_bottom = 207.0
+text = "MohamedKill"
+
+[node name="HashirHappiness" type="Label" parent="DebugStats"]
+layout_mode = 0
+offset_top = 115.0
+offset_right = 40.0
+offset_bottom = 138.0
+text = "HashirHappiness"
+
+[node name="MohamedQuiet" type="Label" parent="DebugStats"]
+layout_mode = 0
+offset_top = 92.0
+offset_right = 40.0
+offset_bottom = 115.0
+text = "MohamedQuiet"
+
+[node name="NextDonScream" type="Label" parent="DebugStats"]
+layout_mode = 0
+offset_top = 69.0
+offset_right = 40.0
+offset_bottom = 92.0
+text = "NextDonScream"
+
+[node name="NextDonActive" type="Label" parent="DebugStats"]
+layout_mode = 0
+offset_top = 46.0
+offset_right = 40.0
+offset_bottom = 69.0
+text = "NextDonActive"
+
+[node name="NextPramitMovement" type="Label" parent="DebugStats"]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 40.0
+offset_bottom = 46.0
+text = "NextPramitMovement"
+
+[node name="PramitPosition" type="Label" parent="DebugStats"]
+layout_mode = 0
+offset_top = 161.0
+offset_right = 40.0
+offset_bottom = 184.0
+text = "PramitPosition"

@@ -1,0 +1,120 @@
+[gd_scene load_steps=13 format=3 uid="uid://owx5jxw7840p"]
+
+[ext_resource type="Script" path="res://Scripts/OfficeArea.gd" id="1_30quw"]
+[ext_resource type="Texture2D" uid="uid://l1w3rimls2xu" path="res://Assets/Textures/Office/office.png" id="2_qkeuh"]
+[ext_resource type="PackedScene" uid="uid://b78ptv4eyrgv2" path="res://Scenes/Monitor.tscn" id="3_72ne5"]
+[ext_resource type="Texture2D" uid="uid://ns7xx8iutaci" path="res://Assets/Textures/Office/office_dark.png" id="4_7bigy"]
+[ext_resource type="AudioStream" uid="uid://cslwy5g3rlibg" path="res://Assets/Sounds/hashir_wake_up.mp3" id="4_bjrx4"]
+[ext_resource type="Texture2D" uid="uid://bldmwotbhi3ef" path="res://Assets/Textures/Door Characters/pramit.png" id="4_csfdg"]
+[ext_resource type="Texture2D" uid="uid://caltgbyctiybx" path="res://Assets/Textures/Door Characters/eyes.png" id="5_qiirh"]
+[ext_resource type="Texture2D" uid="uid://cwxdffq0ci7jr" path="res://Assets/Textures/Door Characters/hashir.png" id="6_0dwrt"]
+[ext_resource type="AudioStream" uid="uid://1f8btvlifq7d" path="res://Assets/Sounds/don_scream.mp3" id="6_wy6gf"]
+[ext_resource type="AudioStream" uid="uid://c6oh4yyr5e4px" path="res://Assets/Sounds/power_down.mp3" id="8_54k0k"]
+[ext_resource type="AudioStream" uid="uid://dcrr2xnwhnwvy" path="res://Assets/Sounds/electricity_switch.mp3" id="9_aft3o"]
+[ext_resource type="AudioStream" uid="uid://bfjsguhjnt4o8" path="res://Assets/Sounds/knock.mp3" id="10_deyq0"]
+
+[node name="OfficeArea" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_30quw")
+
+[node name="Office" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 2722.0
+offset_bottom = 1080.0
+texture = ExtResource("2_qkeuh")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MohamedAtDoor" type="Sprite2D" parent="Office"]
+position = Vector2(215.5, 387)
+scale = Vector2(0.725, 0.5)
+texture = ExtResource("5_qiirh")
+
+[node name="RiyyanAtDoor" type="Sprite2D" parent="Office"]
+position = Vector2(2569.5, 391)
+scale = Vector2(0.875, 0.7)
+texture = ExtResource("5_qiirh")
+
+[node name="HashirAtDoor" type="Sprite2D" parent="Office"]
+visible = false
+position = Vector2(433, 493.644)
+scale = Vector2(1.64929, 1.64929)
+texture = ExtResource("6_0dwrt")
+
+[node name="OfficeDark" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 2722.0
+offset_bottom = 1080.0
+texture = ExtResource("4_7bigy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="OfficeNormal" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 2722.0
+offset_bottom = 1080.0
+texture = ExtResource("2_qkeuh")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MonitorButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 697.0
+offset_top = 449.0
+offset_right = 1139.0
+offset_bottom = 748.0
+
+[node name="ElectricityButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 349.0
+offset_top = 357.0
+offset_right = 425.0
+offset_bottom = 467.0
+
+[node name="Monitor" parent="." instance=ExtResource("3_72ne5")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+
+[node name="PramitAtDoor" type="Sprite2D" parent="."]
+position = Vector2(2966.63, 540)
+scale = Vector2(0.672971, 0.677116)
+texture = ExtResource("4_csfdg")
+
+[node name="PowerDown" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(944, 0)
+stream = ExtResource("8_54k0k")
+volume_db = 3.3
+
+[node name="ElectricitySound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(944, 0)
+stream = ExtResource("9_aft3o")
+volume_db = -2.056
+
+[node name="Knock" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(2215, 1080)
+stream = ExtResource("10_deyq0")
+volume_db = 2.959
+
+[node name="HashirWake" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(259, 0)
+stream = ExtResource("4_bjrx4")
+volume_db = -10.0
+bus = &"Reverb"
+
+[node name="DonScream" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(2215, 0)
+stream = ExtResource("6_wy6gf")
+volume_db = -30.0
+bus = &"Reverb"
+
+[node name="HashirKillTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="pressed" from="MonitorButton" to="." method="_on_monitor_pressed"]
+[connection signal="timeout" from="HashirKillTimer" to="." method="_on_hashir_kill_timer_timeout"]

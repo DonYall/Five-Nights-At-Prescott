@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvxj0a43ka5ex"]
+
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_y1oic"]
+[ext_resource type="PackedScene" uid="uid://owx5jxw7840p" path="res://Scenes/OfficeArea.tscn" id="3_cl15p"]
+[ext_resource type="PackedScene" uid="uid://d1fuiuu7xvwh2" path="res://Scenes/HUD.tscn" id="3_ii3mc"]
+[ext_resource type="PackedScene" uid="uid://k0r07j26qai7" path="res://Scenes/GameOver.tscn" id="4_kcuh5"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_y1oic")
+
+[node name="HUD" parent="." instance=ExtResource("3_ii3mc")]
+
+[node name="OfficeArea" parent="." instance=ExtResource("3_cl15p")]
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 180.0
+
+[node name="PramitMovementTimer" type="Timer" parent="."]
+
+[node name="DonActiveTimer" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="HashirAlarmTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="DonScreamTimer" type="Timer" parent="."]
+wait_time = 30.0
+
+[node name="MohamedKillTimer" type="Timer" parent="."]
+
+[node name="MohamedQuietTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="GameOver" parent="." instance=ExtResource("4_kcuh5")]
+visible = false
+
+[connection signal="timeout" from="PramitMovementTimer" to="." method="_on_pramit_movement_timer_timeout"]
+[connection signal="timeout" from="PramitMovementTimer" to="OfficeArea" method="_on_pramit_movement_timer_timeout"]
+[connection signal="timeout" from="DonActiveTimer" to="." method="_on_don_active_timer_timeout"]
+[connection signal="timeout" from="HashirAlarmTimer" to="." method="_on_hashir_alarm_timer_timeout"]
+[connection signal="timeout" from="DonScreamTimer" to="." method="_on_don_scream_timer_timeout"]
+[connection signal="timeout" from="MohamedKillTimer" to="." method="_on_mohamed_kill_timer_timeout"]
+[connection signal="timeout" from="MohamedQuietTimer" to="." method="_on_mohamed_quiet_timer_timeout"]

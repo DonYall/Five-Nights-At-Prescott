@@ -1,0 +1,194 @@
+[gd_scene load_steps=12 format=3 uid="uid://b78ptv4eyrgv2"]
+
+[ext_resource type="Script" path="res://Scripts/Monitor.gd" id="1_b2bcq"]
+[ext_resource type="Texture2D" uid="uid://cqporww1s4rfd" path="res://Assets/Textures/Cameras/don_empty.png" id="2_vnbva"]
+[ext_resource type="Texture2D" uid="uid://ce55xvy85a0xm" path="res://Assets/Textures/Cameras/hallway_empty.png" id="2_xifey"]
+[ext_resource type="Texture2D" uid="uid://bs42dysof0bu5" path="res://Assets/Textures/Cameras/hallway_occupied_3.png" id="3_8whqr"]
+[ext_resource type="Texture2D" uid="uid://eef46v8mdxqq" path="res://Assets/Textures/Cameras/hallway_occupied.png" id="3_br6j8"]
+[ext_resource type="Texture2D" uid="uid://dg60ryskkihe5" path="res://Assets/Textures/Cameras/don_occupied.png" id="3_yh344"]
+[ext_resource type="Texture2D" uid="uid://cflnfdpc6b3ny" path="res://Assets/Textures/Cameras/hallway_occupied_2.png" id="4_3mber"]
+[ext_resource type="Texture2D" uid="uid://cfcd4eiecdl23" path="res://Assets/Textures/Cameras/mohamed.png" id="4_21bn4"]
+[ext_resource type="FontFile" uid="uid://bqiokrkdq8txv" path="res://Assets/Fonts/Roboto-Medium.ttf" id="4_tqlaa"]
+[ext_resource type="Texture2D" uid="uid://dirqblcf271op" path="res://Assets/Textures/Cameras/hallway_occupied_1.png" id="5_i5lte"]
+[ext_resource type="AudioStream" uid="uid://bbtmqqrs6dsh7" path="res://Assets/Sounds/shiver.mp3" id="8_g6hjt"]
+
+[node name="Monitor" type="Node2D"]
+script = ExtResource("1_b2bcq")
+
+[node name="Cameras" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1081.0
+
+[node name="Hallway" type="Control" parent="Cameras"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="4" type="TextureRect" parent="Cameras/Hallway"]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1081.0
+texture = ExtResource("2_xifey")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="3" type="TextureRect" parent="Cameras/Hallway"]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1081.0
+texture = ExtResource("3_8whqr")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="2" type="TextureRect" parent="Cameras/Hallway"]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1081.0
+texture = ExtResource("4_3mber")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="1" type="TextureRect" parent="Cameras/Hallway"]
+visible = false
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1081.0
+texture = ExtResource("5_i5lte")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="0" type="TextureRect" parent="Cameras/Hallway"]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1081.0
+texture = ExtResource("3_br6j8")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Mohamed" type="Control" parent="Cameras"]
+layout_mode = 2
+anchors_preset = 0
+
+[node name="Mohamed" type="TextureRect" parent="Cameras/Mohamed"]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1081.0
+texture = ExtResource("4_21bn4")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="AudioButton" type="Button" parent="Cameras/Mohamed"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 680.0
+offset_top = 409.0
+offset_right = 1240.0
+offset_bottom = 615.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 75
+text = "increase volume"
+
+[node name="MohamedWake" type="AudioStreamPlayer2D" parent="Cameras/Mohamed"]
+stream = ExtResource("8_g6hjt")
+volume_db = -10.0
+autoplay = true
+bus = &"Reverb"
+
+[node name="Don" type="Control" parent="Cameras"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DonFull" type="TextureRect" parent="Cameras/Don"]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1081.0
+texture = ExtResource("3_yh344")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="DonEmpty" type="TextureRect" parent="Cameras/Don"]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1081.0
+texture = ExtResource("2_vnbva")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Controller" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1240.0
+offset_top = 668.0
+offset_right = 1920.0
+offset_bottom = 1081.0
+
+[node name="ToggleMohamed" type="Button" parent="Controller"]
+layout_mode = 0
+offset_top = 102.0
+offset_right = 155.0
+offset_bottom = 176.0
+text = "mohamed"
+
+[node name="ToggleHashir" type="Button" parent="Controller"]
+layout_mode = 0
+offset_left = 155.0
+offset_right = 310.0
+offset_bottom = 74.0
+text = "hashir"
+
+[node name="ToggleDon" type="Button" parent="Controller"]
+layout_mode = 0
+offset_left = 326.0
+offset_right = 481.0
+offset_bottom = 74.0
+text = "don"
+
+[node name="ToggleRiyyan" type="Button" parent="Controller"]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 102.0
+offset_right = 636.0
+offset_bottom = 176.0
+text = "riyyan"
+
+[node name="ToggleHallway" type="Button" parent="Controller"]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 201.0
+offset_right = 636.0
+offset_bottom = 275.0
+theme_override_fonts/font = ExtResource("4_tqlaa")
+text = "hallway"
+
+[node name="Label" type="Label" parent="Controller"]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 150.0
+offset_right = 382.0
+offset_bottom = 210.0
+theme_override_fonts/font = ExtResource("4_tqlaa")
+theme_override_font_sizes/font_size = 50
+text = "YOU"
+
+[connection signal="pressed" from="Cameras/Mohamed/AudioButton" to="." method="_on_audio_button_pressed"]
+[connection signal="pressed" from="Controller/ToggleMohamed" to="." method="_on_toggle_mohamed_pressed"]
+[connection signal="pressed" from="Controller/ToggleHashir" to="." method="_on_toggle_hashir_pressed"]
+[connection signal="pressed" from="Controller/ToggleDon" to="." method="_on_toggle_don_pressed"]
+[connection signal="pressed" from="Controller/ToggleRiyyan" to="." method="_on_toggle_riyyan_pressed"]
+[connection signal="pressed" from="Controller/ToggleHallway" to="." method="_on_toggle_hallway_pressed"]
