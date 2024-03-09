@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvxj0a43ka5ex"]
+[gd_scene load_steps=6 format=3 uid="uid://cvxj0a43ka5ex"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_y1oic"]
 [ext_resource type="PackedScene" uid="uid://owx5jxw7840p" path="res://Scenes/OfficeArea.tscn" id="3_cl15p"]
 [ext_resource type="PackedScene" uid="uid://d1fuiuu7xvwh2" path="res://Scenes/HUD.tscn" id="3_ii3mc"]
 [ext_resource type="PackedScene" uid="uid://k0r07j26qai7" path="res://Scenes/GameOver.tscn" id="4_kcuh5"]
+[ext_resource type="AudioStream" uid="uid://k4ylxgelm5lk" path="res://Assets/Sounds/jumpscare.mp3" id="5_h1o3u"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_y1oic")
@@ -34,6 +35,10 @@ wait_time = 5.0
 
 [node name="GameOver" parent="." instance=ExtResource("4_kcuh5")]
 visible = false
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_h1o3u")
+volume_db = 7.6
 
 [connection signal="timeout" from="PramitMovementTimer" to="." method="_on_pramit_movement_timer_timeout"]
 [connection signal="timeout" from="PramitMovementTimer" to="OfficeArea" method="_on_pramit_movement_timer_timeout"]

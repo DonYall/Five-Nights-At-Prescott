@@ -40,6 +40,7 @@ stretch_mode = 4
 
 [node name="3" type="TextureRect" parent="Cameras/Hallway"]
 visible = false
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1081.0
 texture = ExtResource("3_8whqr")
@@ -48,6 +49,7 @@ stretch_mode = 4
 
 [node name="2" type="TextureRect" parent="Cameras/Hallway"]
 visible = false
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1081.0
 texture = ExtResource("4_3mber")
@@ -65,6 +67,7 @@ stretch_mode = 4
 
 [node name="0" type="TextureRect" parent="Cameras/Hallway"]
 visible = false
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1081.0
 texture = ExtResource("3_br6j8")

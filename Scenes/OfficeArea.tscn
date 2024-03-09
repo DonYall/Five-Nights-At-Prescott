@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cwxdffq0ci7jr" path="res://Assets/Textures/Door Characters/hashir.png" id="6_0dwrt"]
 [ext_resource type="AudioStream" uid="uid://1f8btvlifq7d" path="res://Assets/Sounds/don_scream.mp3" id="6_wy6gf"]
 [ext_resource type="AudioStream" uid="uid://c6oh4yyr5e4px" path="res://Assets/Sounds/power_down.mp3" id="8_54k0k"]
-[ext_resource type="AudioStream" uid="uid://dcrr2xnwhnwvy" path="res://Assets/Sounds/electricity_switch.mp3" id="9_aft3o"]
+[ext_resource type="AudioStream" uid="uid://tfieuyfptl4u" path="res://Assets/Sounds/electricity_sound.mp3" id="9_aft3o"]
 [ext_resource type="AudioStream" uid="uid://bfjsguhjnt4o8" path="res://Assets/Sounds/knock.mp3" id="10_deyq0"]
 
 [node name="OfficeArea" type="Control"]

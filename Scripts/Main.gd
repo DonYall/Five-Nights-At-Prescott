@@ -16,7 +16,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if len(get_children()) <= 1:
+	if len(get_children()) < 11:
 		return
 	if not electricity:
 		temp -= delta
@@ -103,9 +103,10 @@ func _on_mohamed_quiet_timer_timeout():
 	game_over("mohamed")
 
 func game_over(died_by):
+	$DeathSound.play()
 	print("game over. you died to " + died_by)
 	for child in get_children():
-		if not child.get_name() == "GameOver":
+		if not (child.get_name() == "GameOver" or child.get_name() == "DeathSound"):
 			child.queue_free()
 	$GameOver.visible = true
 	$GameOver/Label.text = "game over - " + died_by
