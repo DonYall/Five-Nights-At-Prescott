@@ -11,10 +11,14 @@ var scroll_tween
 var monitor_tween
 var pramit_position = 4
 var don_active = false
+var hashir_spawn_chance = 0
 var noise_level = 0
 var foodInput = ""
 
 signal died_to_hashir
+
+func init(hashir_chance):
+	hashir_spawn_chance = hashir_chance
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -101,7 +105,7 @@ func close_monitor():
 	if not monitor_active:
 		return
 	if not monitor_tween:
-		if randf() < 0.35:
+		if randf() < hashir_spawn_chance:
 			hashir_spawn()
 		$Monitor.modulate.a = 0
 		$Monitor.visible = false
@@ -127,7 +131,7 @@ func pramit_timeout():
 
 func hashir_spawn():
 	$PowerDown.play()
-	$Monitor/Cameras/Mohamed/MohamedWake.stop()
+	$Monitor/Cameras/Mohamed/MohamedWake.set_stream_paused(true)
 	$Office.set_texture($OfficeDark.get_texture())
 	$Office/HashirAtDoor.visible = true
 	$HashirKillTimer.start()
@@ -136,7 +140,7 @@ func hashir_leave():
 	$Office.set_texture($OfficeNormal.get_texture())
 	$Office/HashirAtDoor.visible = false
 	$HashirKillTimer.stop()
-	$Monitor/Cameras/Mohamed/MohamedWake.play()
+	$Monitor/Cameras/Mohamed/MohamedWake.set_stream_paused(false)
 	foodInput = ""
 
 func hashir_is_active():

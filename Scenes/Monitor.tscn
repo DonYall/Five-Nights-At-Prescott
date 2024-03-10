@@ -153,6 +153,7 @@ layout_mode = 0
 offset_left = 155.0
 offset_right = 310.0
 offset_bottom = 74.0
+disabled = true
 text = "hashir"
 
 [node name="ToggleDon" type="Button" parent="Controller"]
@@ -168,6 +169,7 @@ offset_left = 481.0
 offset_top = 102.0
 offset_right = 636.0
 offset_bottom = 176.0
+disabled = true
 text = "riyyan"
 
 [node name="ToggleHallway" type="Button" parent="Controller"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvxj0a43ka5ex"]
+[gd_scene load_steps=7 format=3 uid="uid://cvxj0a43ka5ex"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_y1oic"]
 [ext_resource type="PackedScene" uid="uid://owx5jxw7840p" path="res://Scenes/OfficeArea.tscn" id="3_cl15p"]
 [ext_resource type="PackedScene" uid="uid://d1fuiuu7xvwh2" path="res://Scenes/HUD.tscn" id="3_ii3mc"]
 [ext_resource type="PackedScene" uid="uid://k0r07j26qai7" path="res://Scenes/GameOver.tscn" id="4_kcuh5"]
 [ext_resource type="AudioStream" uid="uid://k4ylxgelm5lk" path="res://Assets/Sounds/jumpscare.mp3" id="5_h1o3u"]
+[ext_resource type="AudioStream" uid="uid://bcm7ku1kjgf81" path="res://Assets/Sounds/timer.mp3" id="6_bvi42"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_y1oic")
@@ -15,6 +16,7 @@ script = ExtResource("1_y1oic")
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 180.0
+one_shot = true
 
 [node name="PramitMovementTimer" type="Timer" parent="."]
 
@@ -22,7 +24,8 @@ wait_time = 180.0
 wait_time = 15.0
 
 [node name="HashirAlarmTimer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 27.0
+one_shot = true
 autostart = true
 
 [node name="DonScreamTimer" type="Timer" parent="."]
@@ -37,7 +40,13 @@ wait_time = 5.0
 visible = false
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(944, 0)
 stream = ExtResource("5_h1o3u")
+volume_db = 7.6
+
+[node name="TimerSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(944, 0)
+stream = ExtResource("6_bvi42")
 volume_db = 7.6
 
 [connection signal="timeout" from="PramitMovementTimer" to="." method="_on_pramit_movement_timer_timeout"]
@@ -47,3 +56,4 @@ volume_db = 7.6
 [connection signal="timeout" from="DonScreamTimer" to="." method="_on_don_scream_timer_timeout"]
 [connection signal="timeout" from="MohamedKillTimer" to="." method="_on_mohamed_kill_timer_timeout"]
 [connection signal="timeout" from="MohamedQuietTimer" to="." method="_on_mohamed_quiet_timer_timeout"]
+[connection signal="finished" from="TimerSound" to="." method="_on_timer_sound_finished"]

@@ -45,6 +45,7 @@ theme_override_font_sizes/font_size = 30
 text = "Sound:"
 
 [node name="DebugStats" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -58,24 +59,17 @@ text = "TimeLeft"
 
 [node name="MohamedHappiness" type="Label" parent="DebugStats"]
 layout_mode = 0
-offset_top = 138.0
-offset_right = 40.0
-offset_bottom = 161.0
+offset_top = 115.0
+offset_right = 160.0
+offset_bottom = 138.0
 text = "MohamedHappiness"
 
 [node name="MohamedKill" type="Label" parent="DebugStats"]
 layout_mode = 0
-offset_top = 184.0
-offset_right = 40.0
-offset_bottom = 207.0
+offset_top = 138.0
+offset_right = 103.0
+offset_bottom = 161.0
 text = "MohamedKill"
-
-[node name="HashirHappiness" type="Label" parent="DebugStats"]
-layout_mode = 0
-offset_top = 115.0
-offset_right = 40.0
-offset_bottom = 138.0
-text = "HashirHappiness"
 
 [node name="MohamedQuiet" type="Label" parent="DebugStats"]
 layout_mode = 0

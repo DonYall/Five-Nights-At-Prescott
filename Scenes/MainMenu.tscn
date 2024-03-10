@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5urd0htgywas"]
+
+[ext_resource type="Texture2D" uid="uid://kmyqbwb1nsvh" path="res://Assets/Images/menu.png" id="1_q002r"]
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="2_84v6l"]
+[ext_resource type="FontFile" uid="uid://dc2a45hrqriyh" path="res://Assets/Fonts/DoubleHomicide.ttf" id="2_h7nrn"]
+[ext_resource type="Texture2D" uid="uid://dqokjriqw7d8v" path="res://Assets/Images/night1.png" id="4_mm0qi"]
+[ext_resource type="Texture2D" uid="uid://dnqxg6bjv7tq3" path="res://Assets/Images/night2.png" id="5_b8cnm"]
+[ext_resource type="Texture2D" uid="uid://b6rai4rp87ss0" path="res://Assets/Images/night3.png" id="6_3x8b8"]
+[ext_resource type="AudioStream" uid="uid://s84s4qcgh5rd" path="res://Assets/Sounds/main_menu.mp3" id="7_a7lgr"]
+
+[node name="MainMenu" type="TextureRect"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_q002r")
+script = ExtResource("2_84v6l")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 96.0
+offset_right = 1652.0
+offset_bottom = 272.0
+theme_override_fonts/font = ExtResource("2_h7nrn")
+theme_override_font_sizes/font_size = 175
+text = "FIVE NIGHTS AT PRESCOTT"
+
+[node name="Night1" type="Button" parent="." groups=["buttons"]]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 490.0
+offset_right = 276.0
+offset_bottom = 569.0
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0.411765, 0.411765, 0.411765, 1)
+theme_override_fonts/font = ExtResource("2_h7nrn")
+theme_override_font_sizes/font_size = 70
+text = "Night 1"
+
+[node name="Newspaper" type="Sprite2D" parent="Night1"]
+visible = false
+position = Vector2(720, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mm0qi")
+
+[node name="Night2" type="Button" parent="." groups=["buttons"]]
+offset_left = 101.0
+offset_top = 569.0
+offset_right = 276.0
+offset_bottom = 648.0
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0.411765, 0.411765, 0.411765, 1)
+theme_override_fonts/font = ExtResource("2_h7nrn")
+theme_override_font_sizes/font_size = 70
+text = "Night 2"
+
+[node name="Newspaper" type="Sprite2D" parent="Night2"]
+visible = false
+position = Vector2(720, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_b8cnm")
+
+[node name="Night3" type="Button" parent="." groups=["buttons"]]
+offset_left = 101.0
+offset_top = 648.0
+offset_right = 276.0
+offset_bottom = 727.0
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0.411765, 0.411765, 0.411765, 1)
+theme_override_fonts/font = ExtResource("2_h7nrn")
+theme_override_font_sizes/font_size = 70
+text = "Night 3"
+
+[node name="Newspaper" type="Sprite2D" parent="Night3"]
+visible = false
+position = Vector2(720, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_3x8b8")
+
+[node name="Night4" type="Button" parent="." groups=["buttons"]]
+offset_left = 101.0
+offset_top = 727.0
+offset_right = 276.0
+offset_bottom = 806.0
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0.411765, 0.411765, 0.411765, 1)
+theme_override_fonts/font = ExtResource("2_h7nrn")
+theme_override_font_sizes/font_size = 70
+text = "Night 4"
+
+[node name="Newspaper" type="Sprite2D" parent="Night4"]
+visible = false
+position = Vector2(720, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mm0qi")
+
+[node name="Night5" type="Button" parent="." groups=["buttons"]]
+offset_left = 101.0
+offset_top = 806.0
+offset_right = 276.0
+offset_bottom = 885.0
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0.411765, 0.411765, 0.411765, 1)
+theme_override_fonts/font = ExtResource("2_h7nrn")
+theme_override_font_sizes/font_size = 70
+text = "Night 5"
+
+[node name="Newspaper" type="Sprite2D" parent="Night5"]
+visible = false
+position = Vector2(720, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mm0qi")
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(948, 0)
+stream = ExtResource("7_a7lgr")
+autoplay = true
+bus = &"Reverb"
+
+[connection signal="pressed" from="Night1" to="." method="_on_night_1_pressed"]
+[connection signal="pressed" from="Night2" to="." method="_on_night_2_pressed"]
+[connection signal="button_down" from="Night3" to="." method="_on_night_3_button_down"]
+[connection signal="pressed" from="Night4" to="." method="_on_night_4_pressed"]
+[connection signal="pressed" from="Night5" to="." method="_on_night_5_pressed"]
+[connection signal="finished" from="MenuMusic" to="." method="_on_menu_music_finished"]
