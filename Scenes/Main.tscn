@@ -49,6 +49,7 @@ position = Vector2(944, 0)
 stream = ExtResource("6_bvi42")
 volume_db = 7.6
 
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
 [connection signal="timeout" from="PramitMovementTimer" to="." method="_on_pramit_movement_timer_timeout"]
 [connection signal="timeout" from="PramitMovementTimer" to="OfficeArea" method="_on_pramit_movement_timer_timeout"]
 [connection signal="timeout" from="DonActiveTimer" to="." method="_on_don_active_timer_timeout"]

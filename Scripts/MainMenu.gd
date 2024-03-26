@@ -1,12 +1,14 @@
 extends TextureRect
 
 var main_scene
+var night5_scene
 var button_hover_theme
 var button_unhover_theme
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	main_scene = preload("res://Scenes/Main.tscn")
+	night5_scene = preload("res://Scenes/Night5.tscn")
 	var font = load("res://Assets/Fonts/DoubleHomicide.ttf")
 	button_hover_theme = Theme.new()
 	button_hover_theme.set_color("white", "button", Color.WHITE)
@@ -38,14 +40,17 @@ func _on_night_1_pressed():
 func _on_night_2_pressed():
 	init_night(2)
 
-func _on_night_3_button_down():
+func _on_night_3_pressed():
 	init_night(3)
 
 func _on_night_4_pressed():
 	init_night(4)
 
 func _on_night_5_pressed():
-	init_night(5)
+	var night5_instance = night5_scene.instantiate()
+	add_child(night5_instance)
+	visible = false
+	$MenuMusic.stop()
 
 func mouse_entered_button(button):
 	button.get_child(0).visible = true

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://df2m72blhiq5r"]
+
+[ext_resource type="Script" path="res://Scripts/Night5.gd" id="1_wdful"]
+[ext_resource type="PackedScene" uid="uid://owx5jxw7840p" path="res://Scenes/OfficeArea.tscn" id="3_p066j"]
+[ext_resource type="AudioStream" uid="uid://baip7jmd37kb6" path="res://Assets/Sounds/monologue.mp3" id="3_tufjq"]
+
+[node name="Night5" type="Node"]
+script = ExtResource("1_wdful")
+
+[node name="OfficeArea" parent="." instance=ExtResource("3_p066j")]
+
+[node name="Monologue" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_tufjq")
+pitch_scale = 1.12
+bus = &"Reverb"
+
+[node name="Wait" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="finished" from="Monologue" to="." method="_on_monologue_finished"]
+[connection signal="timeout" from="Wait" to="." method="_on_wait_timeout"]

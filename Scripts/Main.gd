@@ -146,8 +146,9 @@ func _on_mohamed_quiet_timer_timeout():
 	game_over("mohamed")
 
 func game_over(died_by):
+	$GameTimer.stop()
 	$DeathSound.play()
-	print("game over. you died to " + died_by)
+	print("game over: " + died_by)
 	for child in get_children():
 		if not (child.get_name() == "GameOver" or child.get_name() == "DeathSound"):
 			child.queue_free()
@@ -160,3 +161,6 @@ func _on_hashir_alarm_timer_timeout():
 func _on_timer_sound_finished():
 	$OfficeArea/HashirWake.play()
 	$HashirAlarmTimer.start()
+
+func _on_game_timer_timeout():
+	game_over("you win!")

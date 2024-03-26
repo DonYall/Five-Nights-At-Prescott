@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://owx5jxw7840p"]
+[gd_scene load_steps=15 format=3 uid="uid://owx5jxw7840p"]
 
 [ext_resource type="Script" path="res://Scripts/OfficeArea.gd" id="1_30quw"]
 [ext_resource type="Texture2D" uid="uid://l1w3rimls2xu" path="res://Assets/Textures/Office/office.png" id="2_qkeuh"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dhffdn00fcwo2" path="res://Assets/Textures/Door Characters/riyyan.png" id="4_v51n8"]
 [ext_resource type="Texture2D" uid="uid://cwxdffq0ci7jr" path="res://Assets/Textures/Door Characters/hashir.png" id="6_0dwrt"]
 [ext_resource type="AudioStream" uid="uid://1f8btvlifq7d" path="res://Assets/Sounds/don_scream.mp3" id="6_wy6gf"]
+[ext_resource type="Texture2D" uid="uid://cbyrcndsr0dad" path="res://Assets/Textures/Office/office_light.png" id="7_o52gj"]
 [ext_resource type="AudioStream" uid="uid://c6oh4yyr5e4px" path="res://Assets/Sounds/power_down.mp3" id="8_54k0k"]
 [ext_resource type="AudioStream" uid="uid://tfieuyfptl4u" path="res://Assets/Sounds/electricity_sound.mp3" id="9_as0ai"]
 [ext_resource type="AudioStream" uid="uid://bfjsguhjnt4o8" path="res://Assets/Sounds/knock.mp3" id="10_deyq0"]
@@ -86,6 +87,16 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(2966.63, 540)
 scale = Vector2(0.672971, 0.677116)
 texture = ExtResource("4_csfdg")
+
+[node name="OfficeLight" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 2722.0
+offset_bottom = 1080.0
+texture = ExtResource("7_o52gj")
+expand_mode = 2
+stretch_mode = 4
 
 [node name="PowerDown" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(944, 0)

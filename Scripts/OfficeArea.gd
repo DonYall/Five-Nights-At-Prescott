@@ -26,6 +26,8 @@ func _ready():
 	background_width = $Office.size.x
 	background_position_x = $Office.position.x
 	$Office.set_pivot_offset($Office.size / 2)
+	$OfficeLight.set_pivot_offset($OfficeLight.size / 2)
+	$OfficeLight.position.x = background_position_x - (background_width - viewport_width) / 2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
