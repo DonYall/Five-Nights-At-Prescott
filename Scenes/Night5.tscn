@@ -12,7 +12,7 @@ script = ExtResource("1_wdful")
 [node name="Monologue" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_tufjq")
 pitch_scale = 1.12
-bus = &"Reverb"
+bus = &"Less Reverb"
 
 [node name="Wait" type="Timer" parent="."]
 wait_time = 5.0

@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://ncvswvks3l85"]
+[gd_resource type="AudioBusLayout" load_steps=8 format=3 uid="uid://ncvswvks3l85"]
 
 [sub_resource type="AudioEffectFilter" id="AudioEffectFilter_e5rcy"]
 resource_name = "Filter"
@@ -14,6 +14,13 @@ resource_name = "Reverb"
 
 [sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_2enhf"]
 resource_name = "Distortion"
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_k6h46"]
+resource_name = "Distortion"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_31ssr"]
+resource_name = "Reverb"
+room_size = 0.35
 
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectFilter_e5rcy")
@@ -32,3 +39,13 @@ bus/1/effect/0/effect = SubResource("AudioEffectReverb_u18kt")
 bus/1/effect/0/enabled = true
 bus/1/effect/1/effect = SubResource("AudioEffectDistortion_2enhf")
 bus/1/effect/1/enabled = true
+bus/2/name = &"Less Reverb"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectDistortion_k6h46")
+bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectReverb_31ssr")
+bus/2/effect/1/enabled = false

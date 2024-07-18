@@ -60,6 +60,7 @@ func _process(delta):
 			scroll_tween = get_tree().create_tween()
 			scroll_tween.set_parallel(true)
 			scroll_tween.tween_property($Office, "position:x", background_position_x - target_scroll, scroll_duration)
+			scroll_tween.tween_property($OfficeLight, "position:x", background_position_x - target_scroll, scroll_duration)
 			scroll_tween.tween_property($PramitAtDoor, "position:x", viewport_width, scroll_duration)
 			scroll_tween.connect("finished", kill_scroll_tween)
 			return
@@ -70,6 +71,7 @@ func _process(delta):
 		scroll_tween = get_tree().create_tween()
 		scroll_tween.set_parallel(true)
 		scroll_tween.tween_property($Office, "position:x", background_position_x - target_scroll, scroll_duration)
+		scroll_tween.tween_property($OfficeLight, "position:x", background_position_x - target_scroll, scroll_duration)
 		scroll_tween.tween_property($PramitAtDoor, "position:x", viewport_width + $PramitAtDoor.get_rect().size.x, scroll_duration)
 		scroll_tween.connect("finished", kill_scroll_tween)
 

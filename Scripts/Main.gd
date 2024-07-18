@@ -149,11 +149,12 @@ func game_over(died_by):
 	$GameTimer.stop()
 	$DeathSound.play()
 	print("game over: " + died_by)
-	for child in get_children():
-		if not (child.get_name() == "GameOver" or child.get_name() == "DeathSound"):
-			child.queue_free()
-	$GameOver.visible = true
-	$GameOver/Label.text = "game over - " + died_by
+	#for child in get_children():
+		#if not (child.get_name() == "GameOver" or child.get_name() == "DeathSound"):
+			#child.queue_free()
+	#$GameOver.visible = true
+	#$GameOver/Label.text = "game over - " + died_by
+	$GameOver.init(died_by)
 
 func _on_hashir_alarm_timer_timeout():
 	$TimerSound.play()
