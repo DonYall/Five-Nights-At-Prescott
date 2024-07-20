@@ -32,6 +32,7 @@ autostart = true
 wait_time = 30.0
 
 [node name="MohamedKillTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="MohamedQuietTimer" type="Timer" parent="."]
 wait_time = 5.0

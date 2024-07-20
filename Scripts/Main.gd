@@ -59,7 +59,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if len(get_children()) < 11:
+	if len(get_children()) < 11 or $GameTimer.is_stopped():
 		return
 	if not electricity:
 		temp -= delta
@@ -80,7 +80,7 @@ func _process(delta):
 	if mohamed_happiness <= 0:
 		$OfficeArea/Office/MohamedAtDoor.visible = true
 		if $MohamedKillTimer.is_stopped():
-			$MohamedKillTimer.start(15)
+			$MohamedKillTimer.start(2)
 	elif mohamed_happiness == 2:
 		if $MohamedQuietTimer.is_stopped():
 			$OfficeArea/Office/MohamedAtDoor.visible = true
@@ -146,6 +146,7 @@ func _on_mohamed_quiet_timer_timeout():
 	game_over("mohamed")
 
 func game_over(died_by):
+	$OfficeArea.died_to_hashir.disconnect(game_over)
 	$GameTimer.stop()
 	$DeathSound.play()
 	print("game over: " + died_by)

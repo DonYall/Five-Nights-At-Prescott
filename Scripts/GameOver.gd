@@ -14,6 +14,10 @@ func init(character):
 		$HashirJumpscare.visible = true
 	elif character == "pramit":
 		$PramitJumpscare.visible = true
+	elif character == "riyyan":
+		$RiyyanJumpscare.visible = true
+	elif character == "mohamed":
+		$MohamedJumpscare.visible = true
 	else:
 		$Label.visible = true
 		$Label.text = "game over - " + character
