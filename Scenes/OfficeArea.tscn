@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://owx5jxw7840p"]
+[gd_scene load_steps=17 format=3 uid="uid://owx5jxw7840p"]
 
 [ext_resource type="Script" path="res://Scripts/OfficeArea.gd" id="1_30quw"]
 [ext_resource type="Texture2D" uid="uid://l1w3rimls2xu" path="res://Assets/Textures/Office/office.png" id="2_qkeuh"]
@@ -14,6 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://c6oh4yyr5e4px" path="res://Assets/Sounds/power_down.mp3" id="8_54k0k"]
 [ext_resource type="AudioStream" uid="uid://tfieuyfptl4u" path="res://Assets/Sounds/electricity_sound.mp3" id="9_as0ai"]
 [ext_resource type="AudioStream" uid="uid://bfjsguhjnt4o8" path="res://Assets/Sounds/knock.mp3" id="10_deyq0"]
+[ext_resource type="AudioStream" uid="uid://d2c4mstufaa2w" path="res://Assets/Sounds/zaid_leave.mp3" id="13_2d1p8"]
+[ext_resource type="AudioStream" uid="uid://cbcof4twtfnce" path="res://Assets/Sounds/ambience.mp3" id="15_e4y7r"]
 
 [node name="OfficeArea" type="Control"]
 layout_mode = 3
@@ -113,6 +115,10 @@ position = Vector2(2215, 1080)
 stream = ExtResource("10_deyq0")
 volume_db = 2.959
 
+[node name="ZaidLeave" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_2d1p8")
+volume_db = 12.0
+
 [node name="HashirWake" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(259, 0)
 stream = ExtResource("4_bjrx4")
@@ -127,6 +133,11 @@ bus = &"Reverb"
 
 [node name="HashirKillTimer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="Ambience" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_e4y7r")
+volume_db = 11.886
+autoplay = true
 
 [connection signal="pressed" from="MonitorButton" to="." method="_on_monitor_pressed"]
 [connection signal="timeout" from="HashirKillTimer" to="." method="_on_hashir_kill_timer_timeout"]

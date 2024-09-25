@@ -1,6 +1,5 @@
 extends Node
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$OfficeArea.hashir_spawn()
@@ -20,4 +19,3 @@ func _on_wait_timeout():
 
 func _on_monologue_finished():
 	$OfficeArea.modulate.a = 100
-	

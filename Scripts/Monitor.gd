@@ -21,7 +21,7 @@ func _on_toggle_mohamed_pressed():
 	change_selected_camera($Cameras/Mohamed)
 
 func _on_toggle_hashir_pressed():
-	pass # Replace with function body.
+	change_selected_camera($Cameras/Hashir)
 
 func _on_toggle_don_pressed():
 	change_selected_camera($Cameras/Don)
@@ -33,9 +33,9 @@ func _on_toggle_hallway_pressed():
 	change_selected_camera($Cameras/Hallway)
 
 func _on_audio_button_pressed():
-	if $Cameras/Mohamed/MohamedWake.volume_db == -10:
-		$Cameras/Mohamed/MohamedWake.volume_db = 0
-		$Cameras/Mohamed/AudioButton.text = "decrease volume"
+	if not $Cameras/Mohamed/MohamedWake.playing:
+		$Cameras/Mohamed/MohamedWake.play()
+		$Cameras/Mohamed/AudioButton.text = "pause sound"
 	else:
-		$Cameras/Mohamed/MohamedWake.volume_db = -10
-		$Cameras/Mohamed/AudioButton.text = "increase volume"
+		$Cameras/Mohamed/MohamedWake.stop()
+		$Cameras/Mohamed/AudioButton.text = "play sound"

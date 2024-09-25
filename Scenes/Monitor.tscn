@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b78ptv4eyrgv2"]
+[gd_scene load_steps=14 format=3 uid="uid://b78ptv4eyrgv2"]
 
 [ext_resource type="Script" path="res://Scripts/Monitor.gd" id="1_b2bcq"]
 [ext_resource type="Texture2D" uid="uid://cqporww1s4rfd" path="res://Assets/Textures/Cameras/don_empty.png" id="2_vnbva"]
@@ -11,6 +11,8 @@
 [ext_resource type="FontFile" uid="uid://bqiokrkdq8txv" path="res://Assets/Fonts/Roboto-Medium.ttf" id="4_tqlaa"]
 [ext_resource type="Texture2D" uid="uid://dirqblcf271op" path="res://Assets/Textures/Cameras/hallway_occupied_1.png" id="5_i5lte"]
 [ext_resource type="AudioStream" uid="uid://bbtmqqrs6dsh7" path="res://Assets/Sounds/shiver.mp3" id="8_g6hjt"]
+[ext_resource type="Texture2D" uid="uid://bru8xo1iuorwv" path="res://Assets/Textures/Cameras/hashir.png" id="11_ptxd5"]
+[ext_resource type="Texture2D" uid="uid://g667mx5l7ci0" path="res://Assets/Textures/Cameras/zaid.png" id="12_rrau5"]
 
 [node name="Monitor" type="Node2D"]
 script = ExtResource("1_b2bcq")
@@ -100,12 +102,11 @@ offset_bottom = 615.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 75
-text = "increase volume"
+text = "play sound"
 
 [node name="MohamedWake" type="AudioStreamPlayer2D" parent="Cameras/Mohamed"]
 stream = ExtResource("8_g6hjt")
 volume_db = -10.0
-autoplay = true
 bus = &"Reverb"
 
 [node name="Don" type="Control" parent="Cameras"]
@@ -133,6 +134,37 @@ texture = ExtResource("2_vnbva")
 expand_mode = 2
 stretch_mode = 4
 
+[node name="Zaid" type="TextureRect" parent="Cameras/Don"]
+visible = false
+layout_mode = 0
+offset_left = -316.0
+offset_right = 894.0
+offset_bottom = 1168.0
+texture = ExtResource("12_rrau5")
+
+[node name="Hashir" type="Control" parent="Cameras"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Room" type="TextureRect" parent="Cameras/Hashir"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1081.0
+texture = ExtResource("11_ptxd5")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Zaid" type="TextureRect" parent="Cameras/Hashir"]
+visible = false
+layout_mode = 0
+offset_left = 105.0
+offset_top = 40.0
+offset_right = 1208.0
+offset_bottom = 1105.0
+texture = ExtResource("12_rrau5")
+
 [node name="Controller" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -143,43 +175,42 @@ offset_bottom = 1081.0
 
 [node name="ToggleMohamed" type="Button" parent="Controller"]
 layout_mode = 0
-offset_top = 102.0
+offset_top = 74.0
 offset_right = 155.0
-offset_bottom = 176.0
-text = "mohamed"
+offset_bottom = 148.0
+text = "0325A"
 
 [node name="ToggleHashir" type="Button" parent="Controller"]
 layout_mode = 0
 offset_left = 155.0
 offset_right = 310.0
 offset_bottom = 74.0
-disabled = true
-text = "hashir"
+text = "0325B"
 
 [node name="ToggleDon" type="Button" parent="Controller"]
 layout_mode = 0
 offset_left = 326.0
 offset_right = 481.0
 offset_bottom = 74.0
-text = "don"
+text = "0325C"
 
 [node name="ToggleRiyyan" type="Button" parent="Controller"]
 layout_mode = 0
 offset_left = 481.0
-offset_top = 102.0
+offset_top = 74.0
 offset_right = 636.0
-offset_bottom = 176.0
+offset_bottom = 148.0
 disabled = true
-text = "riyyan"
+text = "0325D"
 
 [node name="ToggleHallway" type="Button" parent="Controller"]
 layout_mode = 0
-offset_left = 481.0
-offset_top = 201.0
-offset_right = 636.0
-offset_bottom = 275.0
+offset_left = 439.0
+offset_top = 210.0
+offset_right = 594.0
+offset_bottom = 284.0
 theme_override_fonts/font = ExtResource("4_tqlaa")
-text = "hallway"
+text = "0325"
 
 [node name="Label" type="Label" parent="Controller"]
 layout_mode = 0

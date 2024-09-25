@@ -10,12 +10,14 @@ var viewport_width
 var scroll_tween
 var monitor_tween
 var pramit_position = 4
+var zaid_position = 3
 var don_active = false
 var hashir_spawn_chance = 0
 var noise_level = 0
 var foodInput = ""
 
 signal died_to_hashir
+signal died_to_zaid
 
 func init(hashir_chance):
 	hashir_spawn_chance = hashir_chance
@@ -64,6 +66,8 @@ func _process(delta):
 			scroll_tween.tween_property($PramitAtDoor, "position:x", viewport_width, scroll_duration)
 			scroll_tween.connect("finished", kill_scroll_tween)
 			return
+		elif $Office.position.x != background_position_x - target_scroll and zaid_position <= 0:
+			emit_signal("died_to_zaid")
 	else:
 		target_scroll = (background_width - viewport_width) / 2
 
@@ -102,7 +106,7 @@ func open_monitor():
 		$Monitor.visible = true
 		monitor_tween = get_tree().create_tween()
 		monitor_tween.tween_property($Office, "scale", Vector2(5.2, 5.2), 0.25)
-		monitor_tween.tween_property($Monitor, "modulate:a", 1, 0.25)
+		monitor_tween.tween_property($Monitor, "modulate:a", 1, 0.1)
 		monitor_tween.connect("finished", monitor_opened)
 
 func close_monitor():
@@ -124,6 +128,8 @@ func is_looking_at_pramit():
 	return target_scroll == background_width - viewport_width
 
 func pramit_timeout():
+	if zaid_position <= 0:
+		return
 	pramit_position -= 1
 	if pramit_position == 0:
 		$Knock.play()

@@ -20,6 +20,8 @@ one_shot = true
 
 [node name="PramitMovementTimer" type="Timer" parent="."]
 
+[node name="ZaidMovementTimer" type="Timer" parent="."]
+
 [node name="DonActiveTimer" type="Timer" parent="."]
 wait_time = 15.0
 
@@ -52,6 +54,7 @@ volume_db = 7.6
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
 [connection signal="timeout" from="PramitMovementTimer" to="." method="_on_pramit_movement_timer_timeout"]
 [connection signal="timeout" from="PramitMovementTimer" to="OfficeArea" method="_on_pramit_movement_timer_timeout"]
+[connection signal="timeout" from="ZaidMovementTimer" to="." method="_on_zaid_movement_timer_timeout"]
 [connection signal="timeout" from="DonActiveTimer" to="." method="_on_don_active_timer_timeout"]
 [connection signal="timeout" from="HashirAlarmTimer" to="." method="_on_hashir_alarm_timer_timeout"]
 [connection signal="timeout" from="DonScreamTimer" to="." method="_on_don_scream_timer_timeout"]

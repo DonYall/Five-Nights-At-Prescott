@@ -11,6 +11,10 @@ var pramit_movement_max
 var don_active_min
 var don_active_max
 
+var zaid_exists
+var zaid_movement_min
+var zaid_movement_max
+
 func init(night):
 	if night == 1:
 		riyyan_min_temperature = randf_range(18, 19)
@@ -19,6 +23,7 @@ func init(night):
 		pramit_movement_max = 20
 		don_active_min = 20
 		don_active_max = 30
+		zaid_exists = false
 	elif night == 2:
 		riyyan_min_temperature = randf_range(19.5, 20)
 		$OfficeArea.init(0.3)
@@ -26,6 +31,7 @@ func init(night):
 		pramit_movement_max = 20
 		don_active_min = 10
 		don_active_max = 30
+		zaid_exists = false
 	elif night == 3:
 		riyyan_min_temperature = randf_range(20, 20.5)
 		$OfficeArea.init(0.4)
@@ -33,24 +39,37 @@ func init(night):
 		pramit_movement_max = 15
 		don_active_min = 10
 		don_active_max = 20
+		zaid_exists = true
+		zaid_movement_min = 10
+		zaid_movement_max = 20
 	elif night == 4:
 		riyyan_min_temperature = randf_range(20, 20.5)
 		$OfficeArea.init(0.5)
-		pramit_movement_min = 5
+		pramit_movement_min = 2
 		pramit_movement_max = 10
 		don_active_min = 10
 		don_active_max = 20
-	elif night == 5:
-		riyyan_min_temperature = randf_range(20.4, 20.6)
-		$OfficeArea.init(0.6)
-		pramit_movement_min = 5
-		pramit_movement_max = 10
-		don_active_min = 10
-		don_active_max = 15
+		zaid_exists = true
+		zaid_movement_min = 2
+		zaid_movement_max = 15
+	#elif night == 5:
+		#riyyan_min_temperature = randf_range(20.4, 20.6)
+		#$OfficeArea.init(0.6)
+		#pramit_movement_min = 5
+		#pramit_movement_max = 10
+		#don_active_min = 10
+		#don_active_max = 15
+		#zaid_exists = true
+		#zaid_movement_min = 5
+		#zaid_movement_max = 15
+
 	$OfficeArea/ElectricityButton.pressed.connect(_on_electricity_button_pressed)
 	$OfficeArea.died_to_hashir.connect(game_over.bind("hashir"))
 	$PramitMovementTimer.start(randi_range(pramit_movement_min, pramit_movement_max))
 	$DonActiveTimer.start(randi_range(don_active_min, don_active_max))
+	if zaid_exists:
+		$ZaidMovementTimer.start(randi_range(zaid_movement_min, zaid_movement_max))
+		$OfficeArea.died_to_zaid.connect(game_over.bind("zaid"))
 	$GameTimer.start(180)
 
 # Called when the node enters the scene tree for the first time.
@@ -74,7 +93,7 @@ func _process(delta):
 	if time == 0:
 		time = 12
 	var mohamed_happiness = 2 - \
-	(1 if $OfficeArea/Monitor/Cameras/Mohamed/MohamedWake.volume_db > -10 else 0) - \
+	(1 if $OfficeArea/Monitor/Cameras/Mohamed/MohamedWake.playing else 0) - \
 	(1 if $OfficeArea/HashirWake.playing else 0) - \
 	(1 if $OfficeArea/DonScream.playing else 0)
 	if mohamed_happiness <= 0:
@@ -84,7 +103,7 @@ func _process(delta):
 	elif mohamed_happiness == 2:
 		if $MohamedQuietTimer.is_stopped():
 			$OfficeArea/Office/MohamedAtDoor.visible = true
-			$MohamedQuietTimer.start(randi_range(10, 15))
+			$MohamedQuietTimer.start(randi_range(5, 10))
 	elif $MohamedKillTimer.is_stopped():
 		$MohamedQuietTimer.stop()
 		$OfficeArea/Office/MohamedAtDoor.visible = false
@@ -108,12 +127,40 @@ func _process(delta):
 		$HUD/DebugStats/NextDonScream.text = "Don scream: " + str($DonScreamTimer.time_left)
 
 func _on_pramit_movement_timer_timeout():
-	if $OfficeArea.pramit_position == 0 or $OfficeArea.pramit_position == 1 and $OfficeArea.is_looking_at_pramit():
+	if ($OfficeArea.pramit_position == 0 or $OfficeArea.pramit_position == 1) and $OfficeArea.is_looking_at_pramit():
 		$OfficeArea.pramit_position = 4
 	elif $OfficeArea.pramit_position == 0:
 		game_over("pramit")
 	$OfficeArea.pramit_timeout()
-	$PramitMovementTimer.start(randi_range(pramit_movement_min, pramit_movement_max))
+	if $OfficeArea.pramit_position == 0:
+		$PramitMovementTimer.start(2.5)
+	else:
+		$PramitMovementTimer.start(randi_range(pramit_movement_min, pramit_movement_max))
+
+func _on_zaid_movement_timer_timeout():
+	if $OfficeArea.pramit_position <= 0:
+		$ZaidMovementTimer.start(5)
+		return
+	$OfficeArea.zaid_position -= 1
+	if $OfficeArea.zaid_position == 2:
+		$OfficeArea/Monitor/Cameras/Hashir/Zaid.visible = true
+		$OfficeArea/Monitor/Cameras/Don/Zaid.visible = false
+	elif $OfficeArea.zaid_position == 1:
+		$OfficeArea/Monitor/Cameras/Hashir/Zaid.visible = false
+		$OfficeArea/Monitor/Cameras/Don/Zaid.visible = true
+	else:
+		$OfficeArea/Monitor/Cameras/Hashir/Zaid.visible = false
+		$OfficeArea/Monitor/Cameras/Don/Zaid.visible = false
+	if $OfficeArea.zaid_position < 0:
+		$OfficeArea.zaid_position = 3
+		temp += 0.5
+		$OfficeArea/ZaidLeave.play()
+		$ZaidMovementTimer.start(randi_range(zaid_movement_min, zaid_movement_max))
+	elif $OfficeArea.zaid_position == 0:
+		$OfficeArea/Knock.play()
+		$ZaidMovementTimer.start(5)
+	else:
+		$ZaidMovementTimer.start(randi_range(zaid_movement_min, zaid_movement_max))
 
 func _on_don_scream_timer_timeout():
 	$OfficeArea/DonScream.play()
