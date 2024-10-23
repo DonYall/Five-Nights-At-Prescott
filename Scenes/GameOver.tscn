@@ -465,6 +465,8 @@ position = Vector2(965, 558)
 scale = Vector2(1.82356, 1.82356)
 sprite_frames = SubResource("SpriteFrames_f8yka")
 autoplay = "default"
+frame = 3
+frame_progress = 0.918691
 speed_scale = 5.0
 
 [node name="CloseTimer" type="Timer" parent="."]

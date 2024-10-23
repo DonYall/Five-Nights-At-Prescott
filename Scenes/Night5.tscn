@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://df2m72blhiq5r"]
 
 [ext_resource type="Script" path="res://Scripts/Night5.gd" id="1_wdful"]
+[ext_resource type="AudioStream" uid="uid://0tqord070173" path="res://Assets/Sounds/monologue2.mp3" id="3_oi50m"]
 [ext_resource type="PackedScene" uid="uid://owx5jxw7840p" path="res://Scenes/OfficeArea.tscn" id="3_p066j"]
-[ext_resource type="AudioStream" uid="uid://baip7jmd37kb6" path="res://Assets/Sounds/monologue.mp3" id="3_tufjq"]
 
 [node name="Night5" type="Node"]
 script = ExtResource("1_wdful")
@@ -10,7 +10,7 @@ script = ExtResource("1_wdful")
 [node name="OfficeArea" parent="." instance=ExtResource("3_p066j")]
 
 [node name="Monologue" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_tufjq")
+stream = ExtResource("3_oi50m")
 pitch_scale = 1.12
 bus = &"Less Reverb"
 

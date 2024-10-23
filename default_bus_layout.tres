@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=8 format=3 uid="uid://ncvswvks3l85"]
+[gd_resource type="AudioBusLayout" load_steps=9 format=3 uid="uid://ncvswvks3l85"]
 
 [sub_resource type="AudioEffectFilter" id="AudioEffectFilter_e5rcy"]
 resource_name = "Filter"
@@ -21,6 +21,10 @@ resource_name = "Distortion"
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_31ssr"]
 resource_name = "Reverb"
 room_size = 0.35
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_1jwun"]
+resource_name = "PitchShift"
+pitch_scale = 0.85
 
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectFilter_e5rcy")
@@ -49,3 +53,5 @@ bus/2/effect/0/effect = SubResource("AudioEffectDistortion_k6h46")
 bus/2/effect/0/enabled = true
 bus/2/effect/1/effect = SubResource("AudioEffectReverb_31ssr")
 bus/2/effect/1/enabled = false
+bus/2/effect/2/effect = SubResource("AudioEffectPitchShift_1jwun")
+bus/2/effect/2/enabled = true
