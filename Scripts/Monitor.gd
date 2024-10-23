@@ -12,6 +12,7 @@ func _process(delta):
 	pass
 
 func change_selected_camera(new_selected_camera):
+	$Blip.play()
 	for camera in $Cameras.get_children():
 		camera.visible = false
 	selected_camera = new_selected_camera

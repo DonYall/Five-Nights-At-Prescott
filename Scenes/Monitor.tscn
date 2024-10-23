@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b78ptv4eyrgv2"]
+[gd_scene load_steps=15 format=3 uid="uid://b78ptv4eyrgv2"]
 
 [ext_resource type="Script" path="res://Scripts/Monitor.gd" id="1_b2bcq"]
 [ext_resource type="Texture2D" uid="uid://cqporww1s4rfd" path="res://Assets/Textures/Cameras/don_empty.png" id="2_vnbva"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://bbtmqqrs6dsh7" path="res://Assets/Sounds/shiver.mp3" id="8_g6hjt"]
 [ext_resource type="Texture2D" uid="uid://bru8xo1iuorwv" path="res://Assets/Textures/Cameras/hashir.png" id="11_ptxd5"]
 [ext_resource type="Texture2D" uid="uid://g667mx5l7ci0" path="res://Assets/Textures/Cameras/zaid.png" id="12_rrau5"]
+[ext_resource type="AudioStream" uid="uid://dmqwgx0mmk1ex" path="res://Assets/Sounds/blip.ogg" id="14_v35yv"]
 
 [node name="Monitor" type="Node2D"]
 script = ExtResource("1_b2bcq")
@@ -221,6 +222,10 @@ offset_bottom = 210.0
 theme_override_fonts/font = ExtResource("4_tqlaa")
 theme_override_font_sizes/font_size = 50
 text = "YOU"
+
+[node name="Blip" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_v35yv")
+volume_db = 6.645
 
 [connection signal="pressed" from="Cameras/Mohamed/AudioButton" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="Controller/ToggleMohamed" to="." method="_on_toggle_mohamed_pressed"]
