@@ -1,5 +1,3 @@
-# Instructions / Mechanics
-
 ## Monitor
 Open the monitor by clicking it in the middle of the screen. Close it by pressing S or Esc. Click on the different available cameras to switch.
 
