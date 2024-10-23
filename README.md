@@ -3,6 +3,9 @@
 ## Monitor
 Open the monitor by clicking it in the middle of the screen. Close it by pressing S or Esc. Click on the different available cameras to switch.
 
+## Power Switch
+Toggle the power with the switch near the middle of the room. Note that the room gets colder while the power's out.
+
 ## Mohamed
 On the leftmost camera, there is an option to play the audio. Use this toggle to increase or decrease the noise level so that it's not too loud or too quiet. If it is quiet for too long, Mohamed will kill you.
 If, at any point, two or more extra sounds play at the same time, Mohamed will kill you.
